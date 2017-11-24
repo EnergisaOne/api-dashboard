@@ -1,0 +1,94 @@
+<div class="container">
+    <h3 class="header">{{title}}</h3>
+
+    <div class="row">
+        <div class="col s5">
+            <div class="card-panel teal">
+                <p class="white-text">
+                    Descreva a API que será exposta pelo API Gateway.
+                </p>
+                <p class="white-text">
+                    Estas informações são necessárias para que o API Gateway saiba como responder quando for responder uma requisição da API.
+                </p>
+                <p class="white-text">
+                    Informe no minimo o nome, o caminho da API (URI/URL Path) e o endereço (URL) de saída.
+                </p>
+            </div>
+        </div>
+        <form name="addAPI" class="col s7" novalidate ng-submit="save()">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="name" ng-model="api.name" type="text" class="validate" ng-class="{invalid: error.name}">
+                    <label for="name" ng-class="{active:api.name}">Nome</label>
+                    <app-field-error error="error.name"></app-field-error>
+                </div>
+                <div class="input-field col s12">
+                    <input id="hosts" ng-model="api.hosts" type="text" class="validate" ng-class="{invalid: error.hosts}">
+                    <label for="hosts" ng-class="{active:api.hosts}">Servidores (Hosts)</label>
+                    <app-field-error error="error.hosts"></app-field-error>
+                </div>
+                <div class="input-field col s12">
+                    <input id="uris"  ng-model="api.uris" type="text" class="validate" ng-class="{invalid: error.uris}">
+                    <label for="uris" ng-class="{active:api.uris}">Caminho da API (URIs)</label>
+                    <app-field-error error="error.uris"></app-field-error>
+                </div>
+                <div class="input-field col s12">
+                    <input id="methods"  ng-model="api.methods" type="text" class="validate" ng-class="{invalid: error.methods}">
+                    <label for="methods" ng-class="{active:api.methods}">Método(s)</label>
+                    <app-field-error error="error.methods"></app-field-error>
+                </div>
+                <div class="input-field col s12">
+                    <input id="upstream_url"  ng-model="api.upstream_url" type="text" class="validate" ng-class="{invalid: error.upstream_url}">
+                    <label for="upstream_url" ng-class="{active:api.upstream_url}">URL de Saída (Upstream)</label>
+                    <app-field-error error="error.upstream_url"></app-field-error>
+                </div>
+                <div class="input-field col s12">
+                    <input id="retries"  ng-model="api.retries" type="text" class="validate" ng-class="{invalid: error.retries}">
+                    <label for="retries" ng-class="{active:api.retries}">Tentativas (Retries)</label>
+                    <app-field-error error="error.retries"></app-field-error>
+                </div>
+                <div class="input-field col s12">
+                    <input id="upstream_connect_timeout"  ng-model="api.upstream_connect_timeout" type="text" class="validate" ng-class="{invalid: error.upstream_connect_timeout}">
+                    <label for="upstream_connect_timeout" ng-class="{active:api.upstream_connect_timeout}">Tempo(ms) de espera de conexão (Upstream)</label>
+                    <app-field-error error="error.upstream_connect_timeout"></app-field-error>
+                </div>
+                <div class="input-field col s12">
+                    <input id="upstream_send_timeout"  ng-model="api.upstream_send_timeout" type="text" class="validate" ng-class="{invalid: error.upstream_send_timeout}">
+                    <label for="upstream_send_timeout" ng-class="{active:api.upstream_send_timeout}">Tempo(ms) de espera de envio (Upstream)</label>
+                    <app-field-error error="error.upstream_send_timeout"></app-field-error>
+                </div>
+                <div class="input-field col s12">
+                    <input id="upstream_read_timeout"  ng-model="api.upstream_read_timeout" type="text" class="validate" ng-class="{invalid: error.upstream_read_timeout}">
+                    <label for="upstream_read_timeout" ng-class="{active:api.upstream_read_timeout}">Tempo(ms) de espera de retorno (Upstream)</label>
+                    <app-field-error error="error.upstream_read_timeout"></app-field-error>
+                </div>
+                <p class="col s6">
+                    <input type="checkbox" ng-model="api.strip_uri" class="filled-in validate" id="strip_uri" ng-true-value="true" ng-false-value="false" />
+                    <label for="strip_uri">Remover URI (Strip)</label>
+                    <app-field-error error="error.strip_uri"></app-field-error>
+                </p>
+                <p class="col s6">
+                    <input type="checkbox"  ng-model="api.preserve_host" class="filled-in validate" id="preserve_host" ng-true-value="true" ng-false-value="false" />
+                    <label for="preserve_host">Preservar "host reader"</label>
+                    <app-field-error error="error.preserve_host"></app-field-error>
+                </p>
+                <p class="col s6">
+                    <input type="checkbox"  ng-model="api.https_only" class="filled-in validate" id="https_only" ng-true-value="true" ng-false-value="false" />
+                    <label for="https_only">Apenas Https</label>
+                    <app-field-error error="error.https_only"></app-field-error>
+                </p>
+                <p class="col s6">
+                    <input type="checkbox"  ng-model="api.http_if_terminated" class="filled-in validate" id="http_if_terminated" ng-true-value="true" ng-false-value="false" />
+                    <label for="http_if_terminated">Http se terminado</label>
+                    <app-field-error error="error.http_if_terminated"></app-field-error>
+                </p>
+                <div class="input-field col s12">
+                    <button type="submit" class="waves-effect waves-light btn right">
+                        {{action}}
+                    </button>
+                </div>
+            </div>
+            <input type="hidden" ng-model="api.id" value="{{api.id}}" />
+        </form>
+    </div>
+</div>
